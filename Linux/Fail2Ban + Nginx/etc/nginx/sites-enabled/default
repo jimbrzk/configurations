@@ -1,0 +1,13 @@
+server {
+	limit_conn addr 1;
+	limit_req zone=one burst=5;
+
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	
+	listen   443 ssl;
+	ssl_certificate    /etc/ssl/certs/[CERT].crt;
+	ssl_certificate_key    /etc/ssl/private/[PRIVATE_KEY].pem;
+
+	root /var/www/html;
+}

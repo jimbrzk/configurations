@@ -1,0 +1,23 @@
+[DEFAULT]
+banaction = ufw
+maxretry = 3
+findtime = 3600
+bantime = 3600
+mta = mail
+action = mail[name=fail2ban, dest=root@tachanka.ovh]
+
+[nginx-req-limit]
+enabled = true
+filter = nginx-req-limit
+action = ufw
+logpath = /var/log/nginx/*error.log
+findtime = 600
+bantime = 7200
+maxretry = 10
+
+[nginx-badbots]
+enabled  = true
+port     = http,https
+filter   = nginx-badbots
+logpath  = /var/log/nginx/access.log
+maxretry = 2
