@@ -1,6 +1,7 @@
 server {
-	limit_conn addr 1;
-	limit_req zone=one burst=5;
+	limit_conn addr 20;
+	client_body_timeout 20s;
+    client_header_timeout 20s;
 
 	listen 80 default_server;
 	listen [::]:80 default_server;
